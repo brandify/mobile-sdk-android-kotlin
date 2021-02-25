@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.brandify.brandifySDKDemo">
+
+    <!-- PERMISSIONS: -->
+    <permission
+        android:name="com.myapp.android.locationapi.maps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="com.myapp.android.locationapi.maps.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- APPLICATION -->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar">
+
+        <!-- Google Maps Debug Key (brandify.api@gmail.com)-->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDXD1q76Y6sAkUK-ydTXajQkDvUx00X_u0" />
+
+        <!-- MAIN ACTIVITY: -->
+        <activity
+            android:name="com.brandify.brandifySDKDemo.home.HomeActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.brandify.brandifySDKDemo.beacon.BeaconActivity"
+            android:label="@string/title_activity_beacon" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.locator.LocatorActivity"
+            android:label="LocatorActivity" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.locator.LocatorDetailsActivity"
+            android:label="LocatorDetailsActivity" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.favorites.FavoritesActivity"
+            android:label="FavoritesActivity" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.about.AboutActivity"
+            android:label="AboutActivity" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.about.AboutDetailsActivity"
+            android:label="AboutDetailsActivity" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.waitlist.WaitlistActivity1"
+            android:label="WaitlistActivity1" />
+        <activity
+            android:name="com.brandify.brandifySDKDemo.waitlist.WaitlistActivity2"
+            android:label="WaitlistActivity2" />
+    </application>
+</manifest>

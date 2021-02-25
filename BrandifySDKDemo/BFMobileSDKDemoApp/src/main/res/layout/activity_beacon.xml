@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <!-- View "hidden" in behind the Main view -->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/hamburgerMenuDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/BFGreen">
+            <!-- Hamburger menu button -->
+            <Button
+                android:id="@+id/hamburger_menu_drawer_button_id"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/hamburgermenu_button"/>
+        </LinearLayout>
+
+        <!-- The main content view -->
+        <FrameLayout
+            android:id="@+id/mainContentsFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:background="#ffffff" >
+
+            <ListView
+                android:id="@+id/beaconListView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:choiceMode="singleChoice"
+                android:divider="#18000000"
+                android:dividerHeight="1dp"
+                android:background="#ffffff"/>
+
+        </FrameLayout>
+
+        <pl.openrnd.multilevellistview.MultiLevelListView
+            android:id="@+id/hamburgerMenuListView"
+            android:layout_gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#3F3F3F"
+            android:divider="@android:color/darker_gray"
+            android:minHeight="100dp"
+            android:visibility="invisible"/>
+
+        <!-- The navigation drawer (hamburger menu) contents -->
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</RelativeLayout>

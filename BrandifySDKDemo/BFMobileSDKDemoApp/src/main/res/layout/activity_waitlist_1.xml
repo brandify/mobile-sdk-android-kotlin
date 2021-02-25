@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+<LinearLayout   android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/mainNavMenu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/BFGreen"
+        android:orientation="horizontal">
+        <!-- Hamburger menu button -->
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:background="@drawable/btn_close_white" android:layout_alignTop="@+id/view_title"
+            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/view_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="WAITLIST"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="15dp"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:gravity="center" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="22dp"
+        android:layout_alignTop="@+id/mainNavMenu"
+        android:layout_centerInParent="true"
+        android:id="@+id/locationAddress" android:layout_marginTop="50dp"
+        android:text="350 South Mt Juliet Road I-40 &amp; Mt. Juliet Road Mount Juliet, TN 37122-6309"
+        android:textIsSelectable="false" android:gravity="center"
+        android:layout_marginBottom="50dp" android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textColor="@android:color/black" android:textSize="22dp"
+              android:id="@+id/label101"
+              android:text="Number of Guest:"
+              android:textIsSelectable="false"
+              android:layout_below="@+id/locationAddress" android:layout_alignParentLeft="true"
+              android:layout_alignParentStart="true" android:layout_marginRight="20dp"
+              android:layout_marginLeft="20dp"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/numberOfGuests" android:layout_below="@+id/locationAddress"
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp" android:text="1"/>
+    </LinearLayout>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:textColor="@android:color/black" android:textSize="22dp"
+              android:layout_alignTop="@+id/mainNavMenu" android:layout_centerInParent="true"
+              android:id="@+id/textView8" android:layout_marginTop="50dp"
+              android:text="Please Note: This is not a reservation. You will be added to the current wait list. You may have a short wait once you arrive while we prepare your table."
+              android:textIsSelectable="false" android:gravity="center"
+              android:layout_marginBottom="50dp" android:layout_marginLeft="20dp"
+              android:layout_marginRight="20dp" android:layout_gravity="center_horizontal"/>
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:id="@+id/nextButton" android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"/>
+    <Button android:layout_width="200dp" android:layout_height="wrap_content" android:text="Remove from Waitlist"
+            android:id="@+id/removeButton" android:layout_gravity="center_horizontal"/>
+
+</LinearLayout>
+</ScrollView>

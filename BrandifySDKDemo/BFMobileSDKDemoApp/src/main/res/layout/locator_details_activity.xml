@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+        <LinearLayout
+            android:id="@+id/fav_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/BFGreen"
+            >
+            <Button
+                android:id="@+id/exit_button_id"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/btn_close_white"/>
+            <TextView
+                android:id="@+id/view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:text="Details"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="80dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/white"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/darker_gray">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="TITLE"
+                android:textColor="@android:color/white"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+            <TextView
+                android:id="@+id/addressText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Address"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+            <TextView
+                android:id="@+id/cityText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CITY, STATE ZIP"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/phoneButton"
+                android:layout_width="105dp"
+                android:layout_height="25dp"
+                android:text="888-888-8888"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_orange_dark">
+            </Button>
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/directionButton"
+                android:layout_width="105dp"
+                android:layout_height="25dp"
+                android:text="Directions"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_orange_dark">
+            </Button>
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/adsButton"
+                android:layout_width="105dp"
+                android:layout_height="25dp"
+                android:text="WEEKLY AD"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_orange_dark">
+
+            </Button>
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+                <ImageButton
+                    android:id="@+id/sendTextButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/send_to_phone"
+                    android:background="@android:color/transparent"/>
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Send to Text"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+                <ImageButton
+                    android:id="@+id/sendEmailButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/send_to_email"
+                    android:background="@android:color/transparent"/>
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Send to Email"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+                <ImageButton
+                    android:id="@+id/featCaliaButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"/>
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/featCaliaText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Featuring Calia"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+            <Button
+                android:id="@+id/favorite_Button"
+                android:layout_width="170dp"
+                android:layout_height="25dp"
+                android:text="Remove from Favorites"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_orange_dark">
+            </Button>
+            </LinearLayout>
+        </LinearLayout>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+
+        <!--STORE HOURS-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/darker_gray">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="STORE HOURS"
+                android:textColor="@android:color/white"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--Monday-->
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/monday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Monday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:id="@+id/monday_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+            <!--Tuesday-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/tuesday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Tuesday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/tuesday_hours"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+            <!--Wednesday-->
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/wednesday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Wednesday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/wednesday_hours"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+            <!--Thursday-->
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/thursday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Thursday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/thursday_hours"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+            <!--Friday-->
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/friday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Friday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/friday_hours"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+            <!--Saturday-->
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/saturday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Saturday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/saturday_hours"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+            <!--Sunday-->
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:id="@+id/sunday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="Sunday"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:id="@+id/sunday_hours"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="88:88am - 88:88pm"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <!--In-Store equipment services-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/darker_gray">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="IN-STORE EQUIPMENT SERVICES"
+                android:textColor="@android:color/white"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/equiment_services_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="10dp" />
+        <!--ABOUT-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/darker_gray">
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="ABOUT"
+                android:textColor="@android:color/white"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/about_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <ImageView
+            android:id="@+id/store_image1"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/sdk_icon" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <ImageView
+            android:id="@+id/store_image2"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/sdk_icon" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <ImageView
+            android:id="@+id/store_image3"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/sdk_icon" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <ImageView
+            android:id="@+id/store_image4"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/sdk_icon" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+    </LinearLayout>
+</ScrollView>

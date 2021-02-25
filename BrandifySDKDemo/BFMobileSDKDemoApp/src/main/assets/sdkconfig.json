@@ -1,0 +1,88 @@
+{
+  "config": {
+    "appkey": "F1FB5C90-20F9-11E6-AC16-32DF1FB6C313",
+    "accountName": "crackerbarrel",
+    "brandName": "Cracker Barrel",
+    "igniteLiteURL": "https://hosted.where2getit.com/crackerbarrel2/lite",
+    "locatorSearchRestURL": "https://hosted.where2getit.com/rest/locatorsearch",
+    "getListRestURL": "https://api.brandify.com/rest/getlist",
+    "netconfig": "",
+    "autoStart": true,
+    "icons": {
+      "default": "https://goo.gl/qgvPvp",
+      "red": "https://goo.gl/orj7LE",
+      "gray": "https://goo.gl/NqYFwB"
+    },
+    "logos": {
+      "default": ""
+    },
+    "baseStoreImagePathURL": "",
+    "defaultStoreImagePathURL": "",
+    "sendToEmailImagePathURL": "https://goo.gl/FrzKTk",
+    "sendToPhoneImagePathURL": "https://goo.gl/x564Ad",
+    "panMilesBeforeRefresh": 2.0,
+    "locator": {
+      "formdata": {
+        "nobf": false,
+        "dataview": "store_default",
+        "mylocation": {
+          "latitude": "",
+          "longitude": ""
+        },
+        "chooseclosest": {
+          "latitude": "",
+          "longitude": ""
+        },
+        "limit": 10,
+        "geolocs": {
+          "geoloc": [
+            {
+              "addressline": "",
+              "country": "",
+              "latitude": "",
+              "longitude": ""
+            }
+          ]
+        },
+        "radiusuom": "mile",
+        "searchradius": "25|50|100|250|500|1000|5000",
+        "order": "_DISTANCE ASC",
+        "where": {
+          "clientKey": {
+            "in": ""
+          },
+          "avgwaitime": {
+            "ilike": ""
+          },
+          "catering": {
+            "ilike": ""
+          },
+          "ordertalk_id": {
+            "in": ""
+          }
+        }
+      }
+    },
+    "getlist": {
+      "request": {
+        "appkey": "",
+        "account": "",
+        "formdata": {
+          "objectname": "",
+          "where": {
+            "clientkey": {
+              "in": ""
+            },
+            "ordertalk_id": {
+              "in": ""
+            }
+          }
+        }
+      }
+    },
+    "geotrackingConfig": {
+      "updateDistanceInMeters": 2400,
+      "updateIntervalInMinutes": 1
+    }
+  }
+}

@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.brandify.BrandifySDKDemo"
+        minSdkVersion 14
+        targetSdkVersion 28
+        versionCode 1
+        versionName '1.2.4a'
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+repositories {
+    jcenter()
+    google()
+    maven {
+        url "https://jitpack.io"
+
+        credentials {username authToken}
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.github.brandify:mobile-sdk-android-dist:1.2.2a'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'org.altbeacon:android-beacon-library:2+'
+    implementation 'com.google.android.gms:play-services-maps:9.8.0'
+    implementation group: "pl.openrnd.android", name: "multi-level-listview", version: "1.0.1"
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.multidex:multidex:2.0.1"
+}

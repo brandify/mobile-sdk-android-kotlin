@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <!-- View "hidden" in behind the Main view -->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/hamburgerMenuDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/BFGreen">
+            <!-- Hamburger menu button -->
+            <Button
+                android:id="@+id/hamburger_menu_drawer_button_id"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/hamburgermenu_button"/>
+
+            <TextView
+                android:id="@+id/view_title"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="Locator"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginStart="70dp"/>
+
+            <!--Locator Buttons-->
+            <ImageButton
+                android:id="@+id/locator_current_location_button_id"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="120dp"
+                android:background="@drawable/icon_location"/>
+
+            <ImageButton
+                android:id="@+id/locator_search_button_id"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="70dp"
+                android:background="@drawable/btn_search"/>
+
+            <ImageButton
+                android:id="@+id/locator_listview_button_id"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"/>
+            <!--Locator Button End-->
+        </RelativeLayout>
+
+        <!-- The main content view -->
+        <FrameLayout
+            android:id="@+id/mainContentsFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp" />
+
+        <pl.openrnd.multilevellistview.MultiLevelListView
+            android:id="@+id/hamburgerMenuListView"
+            android:layout_gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#3F3F3F"
+            android:divider="@android:color/darker_gray"
+            android:minHeight="100dp"
+            android:visibility="invisible"/>
+
+        <!-- The navigation drawer (hamburger menu) contents -->
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</RelativeLayout>
