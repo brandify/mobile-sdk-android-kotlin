@@ -58,7 +58,6 @@ class LocatorActivity : BaseActivity() {
     }
 
     private fun setInitialMainFrameContent() {
-
         //Load the main product menu fragment
         if (locatorMapFragment != null) {
             supportFragmentManager.beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -77,8 +76,8 @@ class LocatorActivity : BaseActivity() {
         setButtonAsListFragment()
         if (!listAddedFlag) {
             listAddedFlag = true
-            if (locatorMapFragment != null) {
-                val fTransaction = supportFragmentManager.beginTransaction().hide(locatorMapFragment!!)
+            if (locatorSearchFragment != null && locatorListFragment != null && locatorMapFragment != null) {
+                val fTransaction = supportFragmentManager.beginTransaction().hide(locatorMapFragment!!).hide(locatorSearchFragment!!)
                 fTransaction.add(R.id.mainContentsFrameLayout, locatorListFragment!!).show(locatorListFragment!!).commit()
             }
         } else {
@@ -87,8 +86,8 @@ class LocatorActivity : BaseActivity() {
             }
             (locatorListFragment?.getListAdapter() as LocatorListAdapter?)?.notifyDataSetChanged()
 
-            if (locatorMapFragment != null) {
-                val fTransaction = supportFragmentManager.beginTransaction().hide(locatorMapFragment!!)
+            if (locatorSearchFragment != null && locatorListFragment != null && locatorMapFragment != null) {
+                val fTransaction = supportFragmentManager.beginTransaction().hide(locatorMapFragment!!).hide(locatorSearchFragment!!)
                 fTransaction.show(locatorListFragment!!).commit()
             }
         }
@@ -102,24 +101,21 @@ class LocatorActivity : BaseActivity() {
 
     private fun listToMap() {
         setButtonAsMapFragment()
-        if (locatorListFragment != null) {
-            val fTransaction = supportFragmentManager.beginTransaction().hide(locatorListFragment!!)
+        if (locatorSearchFragment != null && locatorListFragment != null && locatorMapFragment != null) {
+            val fTransaction = supportFragmentManager.beginTransaction().hide(locatorListFragment!!).hide(locatorSearchFragment!!)
             fTransaction.show(locatorMapFragment!!).commit()
         }
     }
 
     private fun openSearch() {
-        if (locatorSearchFragment != null) {
-            val fTransaction = supportFragmentManager.beginTransaction()
+        if (locatorSearchFragment != null && locatorListFragment != null && locatorMapFragment != null) {
+            val fTransaction = supportFragmentManager.beginTransaction().hide(locatorListFragment!!).hide(locatorMapFragment!!)
             fTransaction.show(locatorSearchFragment!!).commit()
         }
     }
 
     fun closeSearch() {
-        if (locatorSearchFragment != null) {
-            val fTransaction = supportFragmentManager.beginTransaction()
-            fTransaction.hide(locatorSearchFragment!!).commit()
-        }
+        listToMap()
     }
 
     fun runSearch(searchText: String?, filters: HashMap<String, String>) {
