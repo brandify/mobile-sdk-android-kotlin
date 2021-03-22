@@ -4,6 +4,7 @@ import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -225,8 +226,12 @@ class LocatorMapFragment : Fragment() {
         }
         searchLocation.locatorRequestFormdataConfigAdditions["mylocation"] = myLocation
         searchLocation.locatorRequestFormdataConfigAdditions["chooseclosest"] = chooseClosest
-        searchLocation.latitude = 36.020262 //test
-        searchLocation.longitude = -86.791295 //test
+
+        if (!TextUtils.isEmpty(searchLocation.addressLine)) {
+            searchLocation.latitude = 0.toDouble()
+            searchLocation.longitude = 0.toDouble()
+        }
+
         locatorDP.search(context, searchLocation, true, object : BFRunnable<BFListOfLocations?>() {
             override fun run() {
                 try {
