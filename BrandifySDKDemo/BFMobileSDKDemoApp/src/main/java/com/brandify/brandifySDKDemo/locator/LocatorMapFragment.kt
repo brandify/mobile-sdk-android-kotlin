@@ -17,6 +17,7 @@ import com.brandify.BrandifyMobileSDK.models.BFListOfLocations
 import com.brandify.BrandifyMobileSDK.models.BFLocation
 import com.brandify.BrandifyMobileSDK.models.BFRunnable
 import com.brandify.BrandifyMobileSDK.models.BFSearchLocation
+import com.brandify.BrandifyMobileSDK.providers.BFGetListDP
 import com.brandify.BrandifyMobileSDK.providers.BFLocatorDP
 import com.brandify.brandifySDKDemo.R
 import com.brandify.brandifySDKDemo.utils.BFUtils
@@ -189,6 +190,30 @@ class LocatorMapFragment : Fragment() {
     }
 
     private fun getTargetLocations(searchLocation: BFSearchLocation, forceRecenter: Boolean) {
+        prepareSearch(searchLocation, forceRecenter)
+        val locatorDP = BFLocatorDP()
+        val context = BFContext(activity?.applicationContext)
+        val myLocation = HashMap<String, String>()
+        myLocation["latitude"] = "36.020262"
+        myLocation["longitude"] = "-86.791295"
+        val chooseClosest = HashMap<String, String>()
+        chooseClosest["latitude"] = "36.020262"
+        chooseClosest["longitude"] = "-86.791295"
+        if (searchLocation.locatorRequestFormdataConfigAdditions == null) {
+            searchLocation.locatorRequestFormdataConfigAdditions = HashMap()
+        }
+        searchLocation.locatorRequestFormdataConfigAdditions["mylocation"] = myLocation
+        searchLocation.locatorRequestFormdataConfigAdditions["chooseclosest"] = chooseClosest
+
+        if (!TextUtils.isEmpty(searchLocation.addressLine)) {
+            searchLocation.latitude = 0.toDouble()
+            searchLocation.longitude = 0.toDouble()
+        }
+
+        locatorDP.search(context, searchLocation, true, generateCallback(searchLocation, forceRecenter))
+    }
+
+    private fun prepareSearch(searchLocation: BFSearchLocation, forceRecenter: Boolean) {
         //always remove the center point annotation
         if (centerPosMarker != null) {
             centerPosMarker?.remove()
@@ -213,26 +238,10 @@ class LocatorMapFragment : Fragment() {
                 }
             }
         }
-        val locatorDP = BFLocatorDP()
-        val context = BFContext(activity?.applicationContext)
-        val myLocation = HashMap<String, String>()
-        myLocation["latitude"] = "36.020262"
-        myLocation["longitude"] = "-86.791295"
-        val chooseClosest = HashMap<String, String>()
-        chooseClosest["latitude"] = "36.020262"
-        chooseClosest["longitude"] = "-86.791295"
-        if (searchLocation.locatorRequestFormdataConfigAdditions == null) {
-            searchLocation.locatorRequestFormdataConfigAdditions = HashMap()
-        }
-        searchLocation.locatorRequestFormdataConfigAdditions["mylocation"] = myLocation
-        searchLocation.locatorRequestFormdataConfigAdditions["chooseclosest"] = chooseClosest
+    }
 
-        if (!TextUtils.isEmpty(searchLocation.addressLine)) {
-            searchLocation.latitude = 0.toDouble()
-            searchLocation.longitude = 0.toDouble()
-        }
-
-        locatorDP.search(context, searchLocation, true, object : BFRunnable<BFListOfLocations?>() {
+    private fun generateCallback(searchLocation: BFSearchLocation, forceRecenter: Boolean): BFRunnable<BFListOfLocations?> {
+        return object : BFRunnable<BFListOfLocations?>() {
             override fun run() {
                 try {
                     //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentUserLocation.getLatitude(), currentUserLocation.getLongitude()), 10));
@@ -290,7 +299,7 @@ class LocatorMapFragment : Fragment() {
                     Log.e("Error", "Error while setting map targets: " + ex.message)
                 }
             }
-        })
+        }
     }
 
     fun openInfoView(location: BFLocation) {
@@ -303,10 +312,28 @@ class LocatorMapFragment : Fragment() {
 
     fun runSearch(searchText: String?, filters: HashMap<String, String>) {
         val searchLocation = BFSearchLocation()
-        searchLocation.addressLine = searchText
+        //To search by address
+//        searchLocation.addressLine = searchText
+//        searchLocation.filterProperties = filters
+//        getTargetLocations(searchLocation, true)
+
+        //To search by name
         searchLocation.filterProperties = filters
-        getTargetLocations(searchLocation, true)
+        getLocationsByName(searchLocation, searchText, true)
+
         (activity as LocatorActivity?)?.closeSearch()
+    }
+
+    private fun getLocationsByName(searchLocation: BFSearchLocation, searchText: String?, forceRecenter: Boolean) {
+        prepareSearch(searchLocation, forceRecenter)
+
+        val bfContext = BFContext(null)
+        val inMap = HashMap<String, String>()
+        inMap["ilike"] = "%$searchText%"
+        searchLocation.getListProperties["name"] = inMap
+        searchLocation.searchType = BFSearchLocation.BFSearchType.GETLIST
+        val getListDP = BFGetListDP()
+        getListDP.getListOfLocations(bfContext, searchLocation, generateCallback(searchLocation, forceRecenter))
     }
 
     companion object {

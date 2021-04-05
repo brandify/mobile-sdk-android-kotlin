@@ -68,14 +68,9 @@
         "appkey": "",
         "account": "",
         "formdata": {
-          "objectname": "",
           "where": {
-            "clientkey": {
-              "in": ""
-            },
-            "ordertalk_id": {
-              "in": ""
-            }
+            "clientkey": null,
+            "name": null
           }
         }
       }
