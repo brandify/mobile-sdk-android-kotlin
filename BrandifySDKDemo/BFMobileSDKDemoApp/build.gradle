@@ -7,8 +7,8 @@ android {
         applicationId "com.brandify.BrandifySDKDemo"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 13
-        versionName '1.3'
+        versionCode 15
+        versionName '1.4'
         multiDexEnabled true
     }
     buildTypes {
@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.github.brandify:mobile-sdk-android-dist:1.2.2a'
+    implementation 'com.github.brandify:mobile-sdk-android-dist:1.4'
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'org.altbeacon:android-beacon-library:2+'
