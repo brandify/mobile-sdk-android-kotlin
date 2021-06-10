@@ -14,7 +14,7 @@ class AboutDetailsActivity : Activity() {
         setContentView(R.layout.activity_about_details)
 
         val titleText = findViewById<View>(R.id.view_title) as TextView
-        var urlToLoad: String? = ""
+        var urlToLoad = ""
         val bfURL = intent.getStringExtra("AboutURL")
         if (bfURL != null) {
             val termsURL = "https://www.brandify.com/company/terms"

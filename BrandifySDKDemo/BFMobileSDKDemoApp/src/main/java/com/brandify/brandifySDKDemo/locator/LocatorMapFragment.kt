@@ -40,7 +40,11 @@ class LocatorMapFragment : Fragment() {
     private var centerPosMarker: Marker? = null
     private var returnedLocationList: BFListOfLocations? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.locator_map_fragment, container, false)
         returnedLocationList = (activity as LocatorActivity?)?.locationList
         currentUserLocation = BFUtils.getCurrentLocation(activity?.applicationContext)
@@ -66,7 +70,10 @@ class LocatorMapFragment : Fragment() {
                 searchLocation.longitude = currentUserLocation!!.longitude
                 searchLocation.latitude = currentUserLocation!!.latitude
             }
-            Log.d(null, "LocatorMapFrag onCreateView lat/long:" + searchLocation.latitude + " " + searchLocation.longitude)
+            Log.d(
+                null,
+                "LocatorMapFrag onCreateView lat/long:" + searchLocation.latitude + " " + searchLocation.longitude
+            )
             getTargetLocations(searchLocation, true)
         }
         return view
@@ -79,7 +86,7 @@ class LocatorMapFragment : Fragment() {
 
     private fun setMapIfNeeded() {
         mapFragment = this.childFragmentManager
-                .findFragmentByTag(MAP_FRAGMENT_TAG) as SupportMapFragment?
+            .findFragmentByTag(MAP_FRAGMENT_TAG) as SupportMapFragment?
         if (mapFragment == null) {
             mapFragment = SupportMapFragment.newInstance()
             val fragmentTransaction = childFragmentManager.beginTransaction()
@@ -121,10 +128,15 @@ class LocatorMapFragment : Fragment() {
                             addressView.text = selectedLocation.address1
                         }
                         if (selectedLocation.state != null) {
-                            addressView.text = String.format("%s, %s", addressView.text, selectedLocation.state)
+                            addressView.text =
+                                String.format("%s, %s", addressView.text, selectedLocation.state)
                         }
                         if (selectedLocation.postalCode != null) {
-                            addressView.text = String.format("%s %s", addressView.text, selectedLocation.postalCode)
+                            addressView.text = String.format(
+                                "%s %s",
+                                addressView.text,
+                                selectedLocation.postalCode
+                            )
                         }
                         val phoneView = infoView.findViewById<View>(R.id.phone) as TextView
                         if (selectedLocation.phone != null) {
@@ -132,10 +144,36 @@ class LocatorMapFragment : Fragment() {
                         }
                         val distanceView = infoView.findViewById<View>(R.id.distance) as TextView
                         if (selectedLocation.distance != null) {
-                            distanceView.text = String.format("%s%s", selectedLocation.distance, distanceView.text)
+                            distanceView.text =
+                                String.format("%s%s", selectedLocation.distance, distanceView.text)
                         }
                         val storeImage = infoView.findViewById<View>(R.id.store_image) as ImageView
                         if (selectedLocation.storeImageURL != null) {
+                            val url = selectedLocation.storeImageURL
+                            Picasso.with(activity?.applicationContext).load(url).into(storeImage)
+                        }
+
+                        val reviews = selectedLocation.metadata["reviews"]
+                        val googleReviews = reviews?.filter {
+                            !it.isNull("graphsource") && it.getString("graphsource")
+                                .equals("googleplaces")
+                        }
+
+                        val avgRating = infoView.findViewById<View>(R.id.avg_rating) as TextView
+                        val numReviews = infoView.findViewById<View>(R.id.num_reviews) as TextView
+                        if (googleReviews != null && googleReviews.isNotEmpty() && !googleReviews[0].isNull(
+                                "profilerating"
+                            )
+                        ) {
+                            val aGoogleRating = googleReviews[0].getString("profilerating")
+                            avgRating.text = "Google rating (avg): $aGoogleRating"
+                            numReviews.text = "(based on ${googleReviews.size} reviews)"
+                        } else {
+                            avgRating.text = "Google rating (avg): N/A"
+                            numReviews.text = ""
+                        }
+
+                        if (selectedLocation.metadata != null) {
                             val url = selectedLocation.storeImageURL
                             Picasso.with(activity?.applicationContext).load(url).into(storeImage)
                         }
@@ -155,8 +193,9 @@ class LocatorMapFragment : Fragment() {
             }
             mMap?.setOnCameraChangeListener { cameraPosition ->
                 if (mMap != null && lastLocation != null
-                        && lastLocation?.latitude != 0.0 && lastLocation?.longitude != 0.0
-                        && !lockSearchOnPan) {
+                    && lastLocation?.latitude != 0.0 && lastLocation?.longitude != 0.0
+                    && !lockSearchOnPan
+                ) {
                     //Distance in miles
                     val cameraLatLng = mMap!!.cameraPosition.target
                     val cameraLocation = Location("")
@@ -175,7 +214,8 @@ class LocatorMapFragment : Fragment() {
                         val westMapPoint = Location("")
                         westMapPoint.latitude = mMap!!.projection.visibleRegion.farRight.latitude
                         westMapPoint.longitude = mMap!!.projection.visibleRegion.farRight.longitude
-                        val currentDistWideInMeters = eastMapPoint.distanceTo(westMapPoint).toDouble()
+                        val currentDistWideInMeters =
+                            eastMapPoint.distanceTo(westMapPoint).toDouble()
                         val milesWide = currentDistWideInMeters / 1609.34
                         searchLocation.radius.clear()
                         searchLocation.radius.add(milesWide.toInt())
@@ -210,7 +250,12 @@ class LocatorMapFragment : Fragment() {
             searchLocation.longitude = 0.toDouble()
         }
 
-        locatorDP.search(context, searchLocation, true, generateCallback(searchLocation, forceRecenter))
+        locatorDP.search(
+            context,
+            searchLocation,
+            true,
+            generateCallback(searchLocation, forceRecenter)
+        )
     }
 
     private fun prepareSearch(searchLocation: BFSearchLocation, forceRecenter: Boolean) {
@@ -226,7 +271,8 @@ class LocatorMapFragment : Fragment() {
             markerLocationMap?.clear()
         } else {
             //user is panning - only remove those that are not in view any more
-            val iter: MutableIterator<Map.Entry<Marker, BFLocation>>? = markerLocationMap?.entries?.iterator()
+            val iter: MutableIterator<Map.Entry<Marker, BFLocation>>? =
+                markerLocationMap?.entries?.iterator()
             if (iter != null) {
                 while (iter.hasNext()) {
                     val entry = iter.next()
@@ -240,27 +286,57 @@ class LocatorMapFragment : Fragment() {
         }
     }
 
-    private fun generateCallback(searchLocation: BFSearchLocation, forceRecenter: Boolean): BFRunnable<BFListOfLocations?> {
+    private fun generateCallback(
+        searchLocation: BFSearchLocation,
+        forceRecenter: Boolean
+    ): BFRunnable<BFListOfLocations?> {
         return object : BFRunnable<BFListOfLocations?>() {
             override fun run() {
                 try {
-                    //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentUserLocation.getLatitude(), currentUserLocation.getLongitude()), 10));
+                    if (model == null) {
+                        Log.e(null, "Error calling the API, possible internet connection error")
+                        return
+                    }
                     (activity as LocatorActivity?)?.updateListView(model)
                     returnedLocationList = (activity as LocatorActivity?)?.locationList
 
                     if (returnedLocationList != null) {
-                        Log.d(null, "LocatorMapFrag.search lat/long:" + returnedLocationList?.latitude + " " + returnedLocationList?.longitude)
+                        Log.d(
+                            null,
+                            "LocatorMapFrag.search lat/long:" + returnedLocationList?.latitude + " " + returnedLocationList?.longitude
+                        )
                         if (returnedLocationList?.latitude != 0.0 && returnedLocationList?.longitude != 0.0) {
-                            val returnedCenterLoc = LatLng(returnedLocationList!!.latitude, returnedLocationList!!.longitude)
+                            val returnedCenterLoc = LatLng(
+                                returnedLocationList!!.latitude,
+                                returnedLocationList!!.longitude
+                            )
                             Log.d(null, "LocatorMapFrag.search centerPosition:$returnedCenterLoc")
                             if (activity != null) {
-                                centerPosMarker = mMap?.addMarker(BFUtils.getCustomMarker(activity!!.applicationContext, R.drawable.red_pin_shadow, returnedCenterLoc, "", "", ""))
+                                centerPosMarker = mMap?.addMarker(
+                                    BFUtils.getCustomMarker(
+                                        activity!!.applicationContext,
+                                        R.drawable.red_pin_shadow,
+                                        returnedCenterLoc,
+                                        "",
+                                        "",
+                                        ""
+                                    )
+                                )
                             }
                         }
                         for (location in returnedLocationList!!.locationList) {
                             val pos = LatLng(location.latitude, location.longitude)
                             if (mMap != null) {
-                                val marker = mMap!!.addMarker(BFUtils.getCustomMarker(activity!!.applicationContext, R.drawable.green_pin, pos, (location.sequence + 1).toString(), "", ""))
+                                val marker = mMap!!.addMarker(
+                                    BFUtils.getCustomMarker(
+                                        activity!!.applicationContext,
+                                        R.drawable.green_pin,
+                                        pos,
+                                        (location.sequence + 1).toString(),
+                                        "",
+                                        ""
+                                    )
+                                )
                                 if (markerLocationMap != null && locationMarkerMap != null) {
                                     markerLocationMap!![marker] = location
                                     locationMarkerMap!![location] = marker
@@ -269,8 +345,9 @@ class LocatorMapFragment : Fragment() {
                         }
                         Log.d(null, "LocatorMapFrag.search map size:" + markerLocationMap?.size)
                         if (markerLocationMap?.size ?: 0 > 0 &&
-                                (searchLocation.latitude == 0.0 && searchLocation.longitude == 0.0 ||
-                                        forceRecenter)) {
+                            (searchLocation.latitude == 0.0 && searchLocation.longitude == 0.0 ||
+                                    forceRecenter)
+                        ) {
                             lockSearchOnPan = true
                             //fit camera to markers
                             val builder = LatLngBounds.Builder()
@@ -280,9 +357,14 @@ class LocatorMapFragment : Fragment() {
                                     builder.include(marker.position)
                                     //add the opposite position, relative to target (so centering to target fits all)
                                     if (centerPosMarker != null) {
-                                        val dx = marker.position.longitude - centerPosMarker!!.position.longitude
-                                        val dy = marker.position.latitude - centerPosMarker!!.position.latitude
-                                        val opposite = LatLng(centerPosMarker!!.position.latitude - dy, centerPosMarker!!.position.longitude - dx)
+                                        val dx =
+                                            marker.position.longitude - centerPosMarker!!.position.longitude
+                                        val dy =
+                                            marker.position.latitude - centerPosMarker!!.position.latitude
+                                        val opposite = LatLng(
+                                            centerPosMarker!!.position.latitude - dy,
+                                            centerPosMarker!!.position.longitude - dx
+                                        )
                                         builder.include(opposite)
                                     }
                                 }
@@ -304,7 +386,14 @@ class LocatorMapFragment : Fragment() {
 
     fun openInfoView(location: BFLocation) {
         if (locationMarkerMap != null && locationMarkerMap?.containsKey(location) == true) {
-            mMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 10f))
+            mMap?.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(
+                        location.latitude,
+                        location.longitude
+                    ), 10f
+                )
+            )
             val selectedMarker = locationMarkerMap!![location]
             selectedMarker?.showInfoWindow()
         }
@@ -324,7 +413,11 @@ class LocatorMapFragment : Fragment() {
         (activity as LocatorActivity?)?.closeSearch()
     }
 
-    private fun getLocationsByName(searchLocation: BFSearchLocation, searchText: String?, forceRecenter: Boolean) {
+    private fun getLocationsByName(
+        searchLocation: BFSearchLocation,
+        searchText: String?,
+        forceRecenter: Boolean
+    ) {
         prepareSearch(searchLocation, forceRecenter)
 
         val bfContext = BFContext(null)
@@ -333,7 +426,11 @@ class LocatorMapFragment : Fragment() {
         searchLocation.getListProperties["name"] = inMap
         searchLocation.searchType = BFSearchLocation.BFSearchType.GETLIST
         val getListDP = BFGetListDP()
-        getListDP.getListOfLocations(bfContext, searchLocation, generateCallback(searchLocation, forceRecenter))
+        getListDP.getListOfLocations(
+            bfContext,
+            searchLocation,
+            generateCallback(searchLocation, forceRecenter)
+        )
     }
 
     companion object {
