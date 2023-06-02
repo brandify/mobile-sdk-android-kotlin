@@ -1,42 +1,41 @@
 {
   "config": {
-    "appkey": "F4B1F340-2FC8-11E5-AE60-A7EBB845EC6E",
-    "account": "chamberlain",
-    "igniteLiteURL": "",
-    "locatorSearchRestURL": "https://api.where2getit.com/rest/locatorsearch",
-    "getListRestURL": "https://api.where2getit.com/rest/getlist",
-    "netconfig": "",
+    "appkey": "9C92C5D2-6815-11EB-A240-A7F092322438",
+    "account" : "chamberlain",
+    "accountName": "chamberlain",
+    "igniteLiteURL" : "",
+    "locatorSearchRestURL" : "https://api.brandify.com/rest/locatorsearch",
+    "getListURL" : "https://api.brandify.com/rest/getlist",
+    "netconfig" : "",
     "autoStart": true,
-    "icons": {
-      "default": "http://hosted.where2getit.com/w2gi/images/icons/gray-pin-shadow.png",
-      "red": "http://hosted.where2getit.com/w2gi/images/icons/red-pin-shadow.png",
-      "gray": "http://hosted.where2getit.com/w2gi/images/icons/gray-pin-shadow.png"
+    "icons" : {
+      "default" : "http://hosted.where2getit.com/w2gi/images/icons/gray-pin-shadow.png",
+      "red" : "http://hosted.where2getit.com/w2gi/images/icons/red-pin-shadow.png",
+      "gray" : "http://hosted.where2getit.com/w2gi/images/icons/gray-pin-shadow.png"
     },
-    "logos": {
-      "default": ""
+    "logos":{
+      "default" : ""
     },
-    "baseStoreImagePathURL": "",
-    "defaultStoreImagePathURL": "",
-    "sendToEmailImagePathURL": "",
-    "sendToPhoneImagePathURL": "",
-    "panMilesBeforeRefresh": 2.0,
+    "baseStoreImagePathURL" : "",
+    "defaultStoreImagePathURL" : "",
+    "sendToEmailImagePathURL" : "",
+    "sendToPhoneImagePathURL" : "",
+    "panMilesBeforeRefresh" : 2.0,
     "locator": {
       "formdata": {
-        "nobf": false,
+        "nobf":false,
         "dataview": "store_default",
         "limit": 10,
         "geoip": 1,
         "geolocs": {
-          "geoloc": [
-            {
-              "addressline": "",
-              "country": "",
-              "latitude": "",
-              "longitude": ""
-            }
-          ]
+          "geoloc": [{
+            "addressline": "",
+            "country": "",
+            "latitude": "",
+            "longitude": ""
+          }]
         },
-        "radiusuom": "mile",
+        "radiusuom" : "mile",
         "searchradius": "25|50|100|250|500|1000",
         "order": "_DISTANCE ASC",
         "reviews": {
@@ -49,6 +48,13 @@
           "gg": 1
         },
         "where": {
+          "and": {
+            "diagnostics": "1",
+            "brandname": {
+              "eq": ""
+            },
+            "country": "US"
+          }
         }
       }
     },
@@ -57,9 +63,21 @@
         "appkey": "",
         "account": "",
         "formdata": {
+          "reviews": {
+            "gg": 1
+          },
+          "social": {
+            "gg": 1
+          },
+          "reviewcount": {
+            "gg": 1
+          },
           "where": {
+            "diagnostics": "1",
             "externalid": "",
-            "name": ""
+            "clientkey": "",
+            "name": "",
+            "country": "US"
           }
         }
       }

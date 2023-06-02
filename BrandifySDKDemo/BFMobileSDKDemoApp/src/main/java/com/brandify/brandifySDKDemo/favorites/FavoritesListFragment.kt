@@ -49,7 +49,7 @@ class FavoritesListFragment : ListFragment() {
         val searchLocation = BFSearchLocation()
         val inMap = HashMap<String, String>()
         inMap["in"] = favoriteKeys
-        searchLocation.getListProperties["clientkey"] = inMap
+        searchLocation.getListProperties["externalid"] = inMap
         searchLocation.searchType = BFSearchLocation.BFSearchType.GETLIST
         val getListDP = BFGetListDP()
         getListDP.getListOfLocations(bfContext, searchLocation, object : BFRunnable<BFListOfLocations?>() {

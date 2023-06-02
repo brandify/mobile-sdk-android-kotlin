@@ -402,13 +402,13 @@ class LocatorMapFragment : Fragment() {
     fun runSearch(searchText: String?, filters: HashMap<String, String>) {
         val searchLocation = BFSearchLocation()
         //To search by address
-//        searchLocation.addressLine = searchText
-//        searchLocation.filterProperties = filters
-//        getTargetLocations(searchLocation, true)
+        searchLocation.addressLine = searchText
+        searchLocation.filterProperties = filters
+        getTargetLocations(searchLocation, true)
 
         //To search by name
-        searchLocation.filterProperties = filters
-        getLocationsByName(searchLocation, searchText, true)
+//        searchLocation.filterProperties = filters
+//        getLocationsByName(searchLocation, searchText, true)
 
         (activity as LocatorActivity?)?.closeSearch()
     }
