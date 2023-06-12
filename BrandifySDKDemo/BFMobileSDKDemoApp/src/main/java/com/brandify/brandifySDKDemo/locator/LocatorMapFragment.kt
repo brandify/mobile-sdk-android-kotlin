@@ -233,17 +233,19 @@ class LocatorMapFragment : Fragment() {
         prepareSearch(searchLocation, forceRecenter)
         val locatorDP = BFLocatorDP()
         val context = BFContext(activity?.applicationContext)
-        val myLocation = HashMap<String, String>()
-        myLocation["latitude"] = "36.020262"
-        myLocation["longitude"] = "-86.791295"
-        val chooseClosest = HashMap<String, String>()
-        chooseClosest["latitude"] = "36.020262"
-        chooseClosest["longitude"] = "-86.791295"
+//        val myLocation = HashMap<String, String>()
+//        myLocation["latitude"] = "36.020262"
+//        myLocation["longitude"] = "-86.791295"
+//        val chooseClosest = HashMap<String, String>()
+//        chooseClosest["latitude"] = "36.020262"
+//        chooseClosest["longitude"] = "-86.791295"
         if (searchLocation.locatorRequestFormdataConfigAdditions == null) {
             searchLocation.locatorRequestFormdataConfigAdditions = HashMap()
         }
-        searchLocation.locatorRequestFormdataConfigAdditions["mylocation"] = myLocation
-        searchLocation.locatorRequestFormdataConfigAdditions["chooseclosest"] = chooseClosest
+//        searchLocation.locatorRequestFormdataConfigAdditions["mylocation"] = myLocation
+        searchLocation.locatorRequestFormdataConfigAdditions["mylocation"] = searchLocation.filterProperties
+//        searchLocation.locatorRequestFormdataConfigAdditions["chooseclosest"] = chooseClosest
+        searchLocation.locatorRequestFormdataConfigAdditions["chooseclosest"] = searchLocation.filterProperties
 
         if (!TextUtils.isEmpty(searchLocation.addressLine)) {
             searchLocation.latitude = 0.toDouble()
