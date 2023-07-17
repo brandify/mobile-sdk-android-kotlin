@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: pl.openrnd.android:multi-level-listview:1.0.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/840d83e05bd3d29b5872722a3c1fbe76/transformed/jetified-multi-level-listview-1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/840d83e05bd3d29b5872722a3c1fbe76/transformed/jetified-multi-level-listview-1.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/840d83e05bd3d29b5872722a3c1fbe76/transformed/jetified-multi-level-listview-1.0.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/pl.openrnd.android/multi-level-listview/1.0.1/d362d4f71f076695544b02110a5280d7a60c5178/multi-level-listview-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/pl.openrnd.android/multi-level-listview/1.0.1/c2521782b90586e75a02a91478175b21237a945c/multi-level-listview-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

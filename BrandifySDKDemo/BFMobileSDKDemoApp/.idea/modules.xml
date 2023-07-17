@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BFMobileSDKDemoApp.iml" filepath="$PROJECT_DIR$/.idea/modules/BFMobileSDKDemoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1160582022/BrandifySDKDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/1160582022/BrandifySDKDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.iml" filepath="$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/BrandifySDKDemo.BFMobileSDKDemoApp.unitTest.iml" />
     </modules>
   </component>
 </project>
